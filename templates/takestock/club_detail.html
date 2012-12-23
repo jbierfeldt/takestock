@@ -1,0 +1,102 @@
+{% load currency %}
+<head>
+	<title>{{ club.name }} Detail Page</title>
+</head>
+<body>
+<style type="text/css">
+	.red {
+		color: red;
+	}
+</style>
+<h1>{{ club.name }}</h1>
+<h3>Club Info:</h3>
+Current Club Value: {{ club.current_value|currency }}<br />
+Current Total Shares: {{ club.total_shares }}<br />
+Current Share Price: {{ club.current_price|currency }}<br />
+
+<h3>Current Open Positions:</h3>
+<table width="800px" border="1px">
+		<tr>
+			<td><b>Ticker</b></td>
+			<td><b>Shares</b></td>
+			<td><b>Price</b></td>
+			<td><b>Total</b></td>
+			<td><b>$ G/L</b></td>
+			<td><b>% G/L</b></td>
+			<td><b>% Assets</b></td>
+		</tr>
+	{% for stock in club.stockinstance_set.all %}
+		{% if stock.is_open %}
+			<tr>
+				<td>{{ stock.stock.ticker }}</td>
+				<td>{{ stock.shares }}</td>
+				<td>{{ stock.current_price|currency }}</td>
+				<td>{{ stock.current_value|currency }}</td>
+				<td>{{ stock.amount_gl|colorize|safe }}</td>
+				<td>{{ stock.percent_gl|percent|safe }}</td>
+				<td>{{ stock.total_percentage|percent }}</td>
+			</tr>
+		{% endif %}
+	{% endfor %}
+		<tr>
+			<td>Cash</td>
+			<td></td><td></td>
+			<td>{{ club.cash|currency }}</td>
+			<td></td><td></td><td>{{ club.cash_total_percentage|percent }}</td>
+		</tr>
+		<tr>
+			<td><b>Net Worth</b></td>
+			<td></td><td></td>
+			<td><b>{{ club.current_value|currency }}</b></td>
+			<td></td><td></td><td>100%</td>
+		</tr>
+</table>
+
+
+<h3>Current Closed Positions:</h3>
+<table width="800px" border="1px">
+		<tr>
+			<td><b>Ticker</b></td>
+			<td><b>Shares</b></td>
+			<td><b>Price</b></td>
+			<td><b>Total</b></td>
+			<td><b>$ G/L</b></td>
+			<td><b>% G/L</b></td>
+			<td><b>% Assets</b></td>
+		</tr>
+	{% for stock in club.stockinstance_set.all %}
+		{% if not stock.is_open %}
+			<tr>
+				<td>{{ stock.stock.ticker }}</td>
+				<td>{{ stock.shares }}</td>
+				<td>{{ stock.current_price|currency }}</td>
+				<td>{{ stock.current_value|currency }}</td>
+				<td>{{ stock.amount_gl|colorize|safe }}</td>
+				<td>{{ stock.percent_gl|percent|safe }}</td>
+				<td>{{ stock.total_percentage|percent }}</td>
+		{% endif %}
+	{% endfor %}
+</table>
+
+
+
+<h3>Members:</h3>
+<table width="800px" border="1px">
+		<tr>
+			<td><b>Name</b></td>
+			<td><b>Shares</b></td>
+			<td><b>Share Value</b></td>
+			<td><b>Share Percentage</b></td>
+		</tr>
+	{% for member in club.memberinstance_set.all %}
+		<tr>
+			<td>{{ member.member }}</td>
+			<td>{{ member.shares }}</td>
+			<td>{{ member.total_share_value|currency }}</td>
+			<td>{{ member.total_share_percentage|percent }}</td>
+		</tr>
+	{% endfor %}
+</table>
+
+<a href="/takestock/clubs/">Return to Club List</a>
+</body>

@@ -1,0 +1,6 @@
+Available Clubs:
+<ul>
+	{% for club in club_list %}
+		<li><a href="{{ club.pk }}">{{ club.name }}</a></li>
+	{% endfor %}
+</ul>
