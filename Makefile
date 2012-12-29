@@ -1,4 +1,4 @@
-DEVELOPMENT_ENV_DIRECTORY = .virtualenvs/development
+DEVELOPMENT_ENV_DIRECTORY = $(shell pwd)/.virtualenvs/development
 
 
 help :
