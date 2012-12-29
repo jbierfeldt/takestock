@@ -1,3 +1,5 @@
+PIP ?= pip
+
 DEVELOPMENT_ENV_DIRECTORY = $(shell pwd)/.virtualenvs/development
 
 
@@ -8,7 +10,7 @@ help :
 	@echo
 
 $(DEVELOPMENT_ENV_DIRECTORY)/bin/python :
-	pip install \
+	$(PIP) install \
 		--environment=$(DEVELOPMENT_ENV_DIRECTORY) \
 		--editable . \
 		--requirement requirements.txt
