@@ -3,3 +3,4 @@
 *~
 *.pyc
 .virtualenvs
+src/takestock.egg-info/
