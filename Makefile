@@ -1,13 +1,16 @@
+DEVELOPMENT_ENV_DIRECTORY = .virtualenvs/development
+
+
 help :
 	@echo "usage: make <target> where target is one of:"
 	@echo
 	@echo "  env  Install local development environment"
 	@echo
 
-.virtualenvs/development/bin/python :
+$(DEVELOPMENT_ENV_DIRECTORY)/bin/python :
 	pip install \
-		--environment=.virtualenvs/development \
+		--environment=$(DEVELOPMENT_ENV_DIRECTORY) \
 		--editable . \
 		--requirement requirements.txt
 
-env : .virtualenvs/development/bin/python
+env : $(DEVELOPMENT_ENV_DIRECTORY)/bin/python
