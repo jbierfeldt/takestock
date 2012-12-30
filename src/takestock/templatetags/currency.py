@@ -24,4 +24,4 @@ def colorize(value):
     if value < 0:
         return "<div class='red'>" + str(value) + "</div>"
     else:
-    	return value
+        return value
