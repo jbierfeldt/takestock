@@ -3,7 +3,8 @@ from setuptools import find_packages, setup
 
 version = '0.1'
 requires = (
-    'Django==1.4.3',
+    'django==1.4.3',
+    'django-extensions==1.0.2',
 )
 
 

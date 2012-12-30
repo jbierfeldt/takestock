@@ -20,6 +20,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.staticfiles',
+    'django_extensions',
 
     # Original order, in case things break:
     #'django.contrib.auth',
