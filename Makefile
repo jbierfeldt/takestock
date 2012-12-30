@@ -19,3 +19,4 @@ env : $(DEVELOPMENT_ENV_DIRECTORY)/bin/python
 
 lint : env
 	$(DEVELOPMENT_ENV_DIRECTORY)/bin/pep8 src
+	@echo "SUCCESS! Linter reports no issues."
