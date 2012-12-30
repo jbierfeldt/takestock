@@ -8,6 +8,7 @@ import mimetypes
 import os
 import smtplib
 
+
 def sendMail(recipient, subject, text, *attachmentFilePaths):
     gmailUser = 'jbierfeldt@gmail.com'
     gmailPassword = '97Bcdfb0c12'
@@ -27,6 +28,7 @@ def sendMail(recipient, subject, text, *attachmentFilePaths):
     mailServer.close()
     print('Sent email to %s' % recipient)
     
+
 def sendMailnew(recipient, subject, text, *attachmentFilePaths):
     gmailUser = 'jbierfeldt@gmail.com'
     gmailPassword = '97Bcdfb0c12'
@@ -46,6 +48,7 @@ def sendMailnew(recipient, subject, text, *attachmentFilePaths):
     mailServer.close()
     print('Sent email to %s' % recipient)
     
+
 def getAttachment(attachmentFilePath):
     contentType, encoding = mimetypes.guess_type(attachmentFilePath)
     if contentType is None or encoding is not None:

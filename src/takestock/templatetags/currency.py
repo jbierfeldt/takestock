@@ -10,6 +10,7 @@ register = template.Library()
 def currency(value):
     return locale.currency(float(value), grouping=True)
  
+
 @register.filter(name='percent')
 def percent(value):
     if value is None:
@@ -19,6 +20,7 @@ def percent(value):
     else:
         return floatformat(float(value) * 100.0, 2) + '%'
   
+
 @register.filter(name='colorize')
 def colorize(value):
     if value < 0:

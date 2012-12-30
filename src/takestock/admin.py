@@ -2,8 +2,10 @@ from django.contrib import admin
 
 from takestock.models import Club, Member, MemberInstance, Stock, StockInstance
 
+
 class StockAdmin(admin.ModelAdmin):
     pass
+
 
 class StockInstanceAdmin(admin.ModelAdmin):
     fieldsets = [
@@ -14,19 +16,24 @@ class StockInstanceAdmin(admin.ModelAdmin):
     ]
     readonly_fields = ['current_price']
     
+
 class StockInstanceInline(admin.TabularInline):
     model = StockInstance
     extra = 1
     
+
 class MemberAdmin(admin.ModelAdmin):
     pass
+
 
 class MemberInstanceAdmin(admin.ModelAdmin):
     pass
     
+
 class MemberInstanceInline(admin.TabularInline):
     model = MemberInstance
     extra = 1
+
 
 class ClubAdmin(admin.ModelAdmin):
     list_display = ('name', 'created_at', 'current_value')
@@ -35,6 +42,7 @@ class ClubAdmin(admin.ModelAdmin):
         ('Monetary Information',         {'fields': ['cash']}),
     ]
     inlines = [StockInstanceInline, MemberInstanceInline]
+
 
 admin.site.register(Stock, StockAdmin)
 admin.site.register(StockInstance, StockInstanceAdmin)
