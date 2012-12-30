@@ -21,17 +21,6 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.staticfiles',
     'django_extensions',
-
-    # Original order, in case things break:
-    #'django.contrib.auth',
-    #'django.contrib.contenttypes',
-    #'django.contrib.sessions',
-    #'django.contrib.sites',
-    #'django.contrib.messages',
-    #'django.contrib.staticfiles',
-    #'django.contrib.admin',
-    #'django.contrib.admindocs',
-    #'django.contrib.flatpages',
 )
 LANGUAGE_CODE = 'en-us'
 LOGGING = {
