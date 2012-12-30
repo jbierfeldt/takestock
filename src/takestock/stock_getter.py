@@ -1,4 +1,5 @@
-import re, urllib
+import re
+import urllib
 
 def get_quote(symbol):
     base_url = 'http://finance.google.com/finance?q='

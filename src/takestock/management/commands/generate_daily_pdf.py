@@ -1,13 +1,14 @@
-from django.core.management.base import BaseCommand, CommandError
-
-import os
 from datetime import date
-from django.shortcuts import get_list_or_404
-from takestock.models import Club
+import os
+import StringIO
+
 from django.core.mail import EmailMessage
+from django.core.management.base import BaseCommand, CommandError
+from django.shortcuts import get_list_or_404
 from django.template.loader import render_to_string
 import ho.pisa as pisa
-import StringIO
+
+from takestock.models import Club
 
 
 class Command(BaseCommand):

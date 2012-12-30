@@ -1,12 +1,12 @@
+from email.Encoders import encode_base64
+from email.MIMEAudio import MIMEAudio
+from email.MIMEBase import MIMEBase
+from email.MIMEImage import MIMEImage
+from email.MIMEMultipart import MIMEMultipart
+from email.MIMEText import MIMEText
+import mimetypes
 import os
 import smtplib
-import mimetypes
-from email.MIMEMultipart import MIMEMultipart
-from email.MIMEBase import MIMEBase
-from email.MIMEText import MIMEText
-from email.MIMEAudio import MIMEAudio
-from email.MIMEImage import MIMEImage
-from email.Encoders import encode_base64
 
 def sendMail(recipient, subject, text, *attachmentFilePaths):
     gmailUser = 'jbierfeldt@gmail.com'

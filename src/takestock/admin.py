@@ -1,5 +1,6 @@
 from django.contrib import admin
-from takestock.models import Stock, StockInstance, Member, MemberInstance, Club
+
+from takestock.models import Club, Member, MemberInstance, Stock, StockInstance
 
 class StockAdmin(admin.ModelAdmin):
     pass

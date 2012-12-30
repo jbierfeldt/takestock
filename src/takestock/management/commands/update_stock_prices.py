@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
 
-from takestock.stock_getter import get_quotes
 from takestock.models import Stock
+from takestock.stock_getter import get_quotes
 
 class Command(BaseCommand):
     help = 'Gathers current stock prices from Google Finance using stock_getter script (imported) and updates all stocks in the database to reflect the current stock price.'

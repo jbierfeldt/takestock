@@ -1,8 +1,11 @@
-from django.shortcuts import render_to_response, get_list_or_404, get_object_or_404
-from django.template import RequestContext
-from renderpdf import render_to_pdf
-from takestock.models import Stock, StockInstance, Member, Club
 from datetime import date
+
+from django.shortcuts import get_list_or_404, get_object_or_404, \
+    render_to_response
+from django.template import RequestContext
+
+from takestock.renderpdf import render_to_pdf
+from takestock.models import Club, Member, Stock, StockInstance
 
 def index(request):
     return render_to_response('takestock/index.html', {}, context_instance=RequestContext(request))

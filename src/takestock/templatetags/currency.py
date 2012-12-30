@@ -1,5 +1,6 @@
-from django import template
 import locale
+
+from django import template
 from django.template.defaultfilters import floatformat
 locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
 register = template.Library()

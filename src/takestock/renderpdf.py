@@ -1,9 +1,11 @@
+from cgi import escape
 import cStringIO as StringIO
-import ho.pisa as pisa
+
 from django.template.loader import get_template
 from django.template import Context
 from django.http import HttpResponse
-from cgi import escape
+import ho.pisa as pisa
+
 
 
 def render_to_pdf(template_src, context_dict):
