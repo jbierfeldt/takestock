@@ -7,7 +7,7 @@ def get_quote(symbol):
     return find_q.group(1) if find_q else 'no quote available for: %s' % symbol
 
 def get_quotes(symbols):
-	symbol_value_list = []
-	for symbol in symbols:
-		symbol_value_list.append(get_quote(symbol))
-	return symbol_value_list
+    symbol_value_list = []
+    for symbol in symbols:
+        symbol_value_list.append(get_quote(symbol))
+    return symbol_value_list

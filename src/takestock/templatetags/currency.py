@@ -14,13 +14,13 @@ def percent(value):
   if value is None:
     return None
   elif value < 0:
-  	return "<div class='red'>" + str(floatformat(float(value) * 100.0, 2) + '%') + "</div>"
+      return "<div class='red'>" + str(floatformat(float(value) * 100.0, 2) + '%') + "</div>"
   else:
-  	return floatformat(float(value) * 100.0, 2) + '%'
+      return floatformat(float(value) * 100.0, 2) + '%'
   
 @register.filter(name='colorize')
 def colorize(value):
-	if value < 0:
-		return "<div class='red'>" + str(value) + "</div>"
-	else:
-		return value
+    if value < 0:
+        return "<div class='red'>" + str(value) + "</div>"
+    else:
+    	return value
