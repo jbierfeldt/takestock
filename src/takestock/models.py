@@ -85,8 +85,8 @@ class Member(models.Model):
 
     name = models.CharField(max_length=200)
     email = models.EmailField(max_length=75, blank=True)
-    created_at = models.DateTimeField(auto_now_add = True)
-    updated_at = models.DateTimeField(auto_now = True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     
     def __unicode__(self):
         return self.name
@@ -138,8 +138,8 @@ class Club(models.Model):
 #STOCKS, but the club only has ONE stock price--its own.
 
     name = models.CharField(max_length=200)
-    created_at = models.DateTimeField(auto_now_add = True)
-    updated_at = models.DateTimeField(auto_now = True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     cash = models.DecimalField(max_digits=20, decimal_places=2)
 
     def total_shares(self):
