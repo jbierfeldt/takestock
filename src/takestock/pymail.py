@@ -27,7 +27,7 @@ def sendMail(recipient, subject, text, *attachmentFilePaths):
     mailServer.sendmail(gmailUser, recipient, msg.as_string())
     mailServer.close()
     print('Sent email to %s' % recipient)
-    
+
 
 def sendMailnew(recipient, subject, text, *attachmentFilePaths):
     gmailUser = 'jbierfeldt@gmail.com'
@@ -47,7 +47,7 @@ def sendMailnew(recipient, subject, text, *attachmentFilePaths):
     mailServer.sendmail(gmailUser, recipient, msg.as_string())
     mailServer.close()
     print('Sent email to %s' % recipient)
-    
+
 
 def getAttachment(attachmentFilePath):
     contentType, encoding = mimetypes.guess_type(attachmentFilePath)

@@ -19,12 +19,12 @@ class StockInstanceAdmin(admin.ModelAdmin):
                                      'classes': ['collapse']}),
     ]
     readonly_fields = ['current_price']
-    
+
 
 class StockInstanceInline(admin.TabularInline):
     model = StockInstance
     extra = 1
-    
+
 
 class MemberAdmin(admin.ModelAdmin):
     pass
@@ -32,7 +32,7 @@ class MemberAdmin(admin.ModelAdmin):
 
 class MemberInstanceAdmin(admin.ModelAdmin):
     pass
-    
+
 
 class MemberInstanceInline(admin.TabularInline):
     model = MemberInstance

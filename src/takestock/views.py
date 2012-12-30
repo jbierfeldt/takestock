@@ -39,4 +39,3 @@ def club_detail_pdf(request, club_id):
     #header = header_fmt.format(filename=str(club)+" - "+str(date.today()))
     #response['Content-Disposition'] = header
     return response
-    
