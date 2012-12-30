@@ -12,12 +12,12 @@ def currency(value):
  
 @register.filter(name='percent')
 def percent(value):
-  if value is None:
-    return None
-  elif value < 0:
-      return "<div class='red'>" + str(floatformat(float(value) * 100.0, 2) + '%') + "</div>"
-  else:
-      return floatformat(float(value) * 100.0, 2) + '%'
+    if value is None:
+        return None
+    elif value < 0:
+        return "<div class='red'>" + str(floatformat(float(value) * 100.0, 2) + '%') + "</div>"
+    else:
+        return floatformat(float(value) * 100.0, 2) + '%'
   
 @register.filter(name='colorize')
 def colorize(value):
