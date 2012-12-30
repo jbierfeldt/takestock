@@ -57,9 +57,9 @@ def getAttachment(attachmentFilePath):
     elif mainType == 'message':
         attachment = email.message_from_file(file)
     elif mainType == 'image':
-        attachment = MIMEImage(file.read(),_subType=subType)
+        attachment = MIMEImage(file.read(), _subType=subType)
     elif mainType == 'audio':
-        attachment = MIMEAudio(file.read(),_subType=subType)
+        attachment = MIMEAudio(file.read(), _subType=subType)
     else:
         attachment = MIMEBase(mainType, subType)
     attachment.set_payload(file.read())
