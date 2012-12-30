@@ -34,7 +34,7 @@ class ClubAdmin(admin.ModelAdmin):
         ('Basic Information',         {'fields': ['name']}),
         ('Monetary Information',         {'fields': ['cash']}),
     ]
-    inlines=[StockInstanceInline, MemberInstanceInline]
+    inlines = [StockInstanceInline, MemberInstanceInline]
 
 admin.site.register(Stock, StockAdmin)
 admin.site.register(StockInstance, StockInstanceAdmin)

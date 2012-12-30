@@ -70,7 +70,7 @@ class StockInstance(models.Model):
         return (self.current_value() / self.owner.current_value())
         
     def __unicode__(self):
-        return str(str(self.shares) + str(" of ")+ str(self.stock.ticker))
+        return str(str(self.shares) + str(" of ") + str(self.stock.ticker))
         
         
 ####### Member Models #######
