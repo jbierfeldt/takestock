@@ -23,7 +23,7 @@ class Command(BaseCommand):
                     pdf_name_string = "{name} - {date} Report".format(name=club.name, date=date.today())
                     subject_string = "{name} Daily Report".format(name=club.name)
                     body_string = "What's up {member_name}? You trying to party tonight? Well, just make sure your funds are in order first. I've attached your daily stock report for {club_name}. Check it out!".format(member_name=member.member.name, club_name=club.name)
-                    render = render_to_string("/var/www/bierfeldt/mysite/templates/takestock/club_detail.html", { "club": club, })
+                    render = render_to_string("/var/www/bierfeldt/mysite/templates/takestock/club_detail.html", {"club": club})
                     out = StringIO.StringIO()
                     pdf = pisa.CreatePDF(StringIO.StringIO(render), out)
                     email = EmailMessage(subject_string, body_string, 'jbierfeldt@gmail.com', [member.member.email])
