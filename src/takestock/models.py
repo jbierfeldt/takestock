@@ -50,13 +50,13 @@ class StockInstance(models.Model):
     
     def current_value(self):
         #Current value of this stock instance
-        #ex. $200 Current Price * 10 shares = $2000 
+        #ex. $200 Current Price * 10 shares = $2000
         return (self.current_price() * self.shares)
         
     def purchase_value(self):
         #Purchase value of this stock instance
         #ex. $195 Purchase Price * 10 shares = $1950
-        return (self.purchase_price * self.shares)    
+        return (self.purchase_price * self.shares)
         
     def percent_gl(self):
         #Percent Gained/Lost
