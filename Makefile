@@ -16,3 +16,6 @@ $(DEVELOPMENT_ENV_DIRECTORY)/bin/python :
 		--requirement requirements.txt
 
 env : $(DEVELOPMENT_ENV_DIRECTORY)/bin/python
+
+lint : env
+	$(DEVELOPMENT_ENV_DIRECTORY)/bin/pep8 src
