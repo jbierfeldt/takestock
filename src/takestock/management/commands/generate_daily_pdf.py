@@ -28,7 +28,7 @@ class Command(BaseCommand):
         club_list = get_list_or_404(Club)
         for club in club_list:
             for member in club.memberinstance_set.select_related():
-                if member.receive_daily_emails == True:
+                if member.receive_daily_emails:
                     name = "{name} - {date} Report".format(name=club.name,
                                                            date=date.today())
                     subject = "{name} Daily Report".format(name=club.name)

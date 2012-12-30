@@ -169,7 +169,7 @@ class Club(models.Model):
     #$620
         value = 0
         for stock in self.stockinstance_set.select_related():
-            if stock.is_open == True:
+            if stock.is_open:
                 value = value + stock.current_value()
             else:
                 pass
