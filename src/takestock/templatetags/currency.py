@@ -16,7 +16,9 @@ def percent(value):
     if value is None:
         return None
     elif value < 0:
-        return "<div class='red'>" + str(floatformat(float(value) * 100.0, 2) + '%') + "</div>"
+        return "<div class='red'>" + \
+            str(floatformat(float(value) * 100.0, 2) + '%') + \
+            "</div>"
     else:
         return floatformat(float(value) * 100.0, 2) + '%'
   

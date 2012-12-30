@@ -8,10 +8,11 @@ from django.db import models
 class Stock(models.Model):
 
 #A stock whose current_price is updated every minute by a cronned script
-#running on the server. The current_price updating script gets all Stock objects
-#and runs Google Finance queries on each Stock
+#running on the server. The current_price updating script gets all Stock
+#objects and runs Google Finance queries on each Stock
 
-#Stock has no relation to a particular owner, for that, see StockInstance model below
+#Stock has no relation to a particular owner, for that, see StockInstance model
+#below
 
     ticker = models.CharField(max_length=200)
     current_price = models.DecimalField(max_digits=20, decimal_places=2)
@@ -22,9 +23,11 @@ class Stock(models.Model):
 
 class StockInstance(models.Model):
 
-#A middle-man model which links a Stock model to an owner (see Club model below.)
+#A middle-man model which links a Stock model to an owner (see Club model
+#below.)
 
-#A single owner may possess multiple instances of a single stock purchased at different times
+#A single owner may possess multiple instances of a single stock purchased at
+#different times
 #ex. December 9, 2012 - Owner buys 20 shares of AAPL at $500
 #    December 13, 2012 - Owner buys 15 shares of AAPL at $482
 
@@ -42,7 +45,8 @@ class StockInstance(models.Model):
     #if is_open is False, the instance is considered a closed position
     is_open = models.BooleanField(default=True)
     sell_date = models.DateTimeField(blank=True, null=True)
-    sell_price = models.DecimalField(max_digits=20, decimal_places=2, blank=True, null=True)
+    sell_price = models.DecimalField(max_digits=20, decimal_places=2,
+                                     blank=True, null=True)
     
     def current_value(self):
         #Current value of this stock instance
@@ -56,8 +60,10 @@ class StockInstance(models.Model):
         
     def percent_gl(self):
         #Percent Gained/Lost
-        #ex. ($2000 Current Value - $1950 Purchase Value) / ($1950 Purchase Value) = .03 (03%) Gained
-        return ((self.current_value() - self.purchase_value()) / (self.purchase_value()))
+        #ex. ($2000 Current Value - $1950 Purchase Value) / ($1950 Purchase
+        #Value) = .03 (03%) Gained
+        return ((self.current_value() - self.purchase_value())
+                / (self.purchase_value()))
         
     def amount_gl(self):
         #Dollar Value Gained/Lost
@@ -65,7 +71,8 @@ class StockInstance(models.Model):
         return (self.current_value() - self.purchase_value())
         
     def total_percentage(self):
-        #Percent of Club Value (all club assets including cash) which this stock instance comprises
+        #Percent of Club Value (all club assets including cash) which this
+        #stock instance comprises
         #ex. $2000 Current Value / $10000 Club Total Assests = .20 (20%)
         return (self.current_value() / self.owner.current_value())
         
@@ -77,7 +84,8 @@ class StockInstance(models.Model):
 
     
 class Member(models.Model):
-#Members may belong to multiple clubs. The Member model has no relation to a club
+#Members may belong to multiple clubs. The Member model has no relation to a
+#club
 
 #See MemberInstance model below
     name = models.CharField(max_length=200)
@@ -91,7 +99,8 @@ class Member(models.Model):
 
 class MemberInstance(models.Model):
 
-#A middle-man model which links a Member model to an owner (see Club model below.)
+#A middle-man model which links a Member model to an owner (see Club model
+#below.)
 
 #A single member may belong to multiple clubs at the same time
 #ex. John has 5 shares of "Sandstone Investment Club"
@@ -109,14 +118,18 @@ class MemberInstance(models.Model):
     def total_share_value(self):
     #Total Dollar value of all of particular member's shares of a club
     #ex. Sandstone Investment Club's Share Price is $20 and John has 5 shares
-    #ex. cont. $20 * 5 shares = $100 value of John's shares in Sandstone Investment Club
+    #ex. cont. $20 * 5 shares = $100 value of John's shares in Sandstone
+    #Investment Club
         return (self.shares * self.owner.current_price())
         
     def total_share_percentage(self):
     #Percent of a club that a particular member owns
-    #ex. John has $100 of Sandstone Investment, Sandstone Investment is worth $1000
-    #ex. cont. $100 / $1000 = .10 (10%) John owns 10% of Sandstone Investment's Value
-        return (float(self.total_share_value()) / float(self.owner.current_value()))
+    #ex. John has $100 of Sandstone Investment, Sandstone Investment is worth
+    #$1000
+    #ex. cont. $100 / $1000 = .10 (10%) John owns 10% of Sandstone Investment's
+    #Value
+        return (float(self.total_share_value())
+                / float(self.owner.current_value()))
         
         
 ####### Club Models #######
@@ -127,11 +140,13 @@ class Club(models.Model):
 
 #A club has members (MemberInstance) and buys Stocks (StockInstance).
 
-#A note on the real-life purpose of stock clubs: Small-tim individual investors often do not have the 
-#buying power to make powerful stock purchases. A single individual may not be able to buy 50 shares
-#of a stock priced at $500 each. This individual joins a stock club, possibly with friends, family, or co-workers.
-#The stock club has a number of shares that each member owns some of. The stock CLUB may own shares of many different
-#STOCKS, but the club only has ONE stock price--its own.
+#A note on the real-life purpose of stock clubs: Small-time individual
+#investors often do not have the buying power to make powerful stock purchases.
+#A single individual may not be able to buy 50 shares of a stock priced at
+#$500 each. This individual joins a stock club, possibly with friends, family,
+#or co-workers. The stock club has a number of shares that each member owns
+#some of. The stock CLUB may own shares of many different STOCKS, but the club
+#only has ONE stock price--its own.
 
     name = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -150,7 +165,8 @@ class Club(models.Model):
     def current_value(self):
     #The current value of the club
     #The current value of each stock instance plus the club's uninvested cash
-    #ex. $200 from AAPL StockInstance + $400 from GOOG Instance + $20 cash = $620
+    #ex. $200 from AAPL StockInstance + $400 from GOOG Instance + $20 cash =
+    #$620
         value = 0
         for stock in self.stockinstance_set.select_related():
             if stock.is_open == True:
@@ -161,7 +177,8 @@ class Club(models.Model):
 
     def current_price(self):
     #The club's current share price
-    #The current value of the club divided by the total number of shares of the club
+    #The current value of the club divided by the total number of shares of the
+    #club
     #ex. $620 Club Current Value / 10 Total Shares = $62 per share
         return (self.current_value() / self.total_shares())
         

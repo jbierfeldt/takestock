@@ -11,8 +11,12 @@ class StockInstanceAdmin(admin.ModelAdmin):
     fieldsets = [
         ('Basic Information',       {'fields': ['owner', 'stock']}),
         ('Numerical Information',   {'fields': ['shares']}),
-        ('Purchase Information',    {'fields': ['purchase_date', 'purchase_price']}),
-        ('Closed Information',      {'fields': ['is_open', 'sell_date', 'sell_price'], 'classes': ['collapse']}),
+        ('Purchase Information',    {'fields': ['purchase_date',
+                                                'purchase_price']}),
+        ('Closed Information',      {'fields': ['is_open',
+                                                'sell_date',
+                                                'sell_price'],
+                                     'classes': ['collapse']}),
     ]
     readonly_fields = ['current_price']
     

@@ -68,5 +68,6 @@ def getAttachment(attachmentFilePath):
     attachment.set_payload(file.read())
     encode_base64(attachment)
     file.close()
-    attachment.add_header('Content-Disposition', 'attachment',     filename=os.path.basename(attachmentFilePath))
+    attachment.add_header('Content-Disposition', 'attachment',
+                          filename=os.path.basename(attachmentFilePath))
     return attachment
