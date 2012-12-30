@@ -77,12 +77,9 @@ class StockInstance(models.Model):
 
     
 class Member(models.Model):
-    
-
 #Members may belong to multiple clubs. The Member model has no relation to a club
 
 #See MemberInstance model below
-
     name = models.CharField(max_length=200)
     email = models.EmailField(max_length=75, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -108,7 +105,6 @@ class MemberInstance(models.Model):
     receive_weekly_emails = models.BooleanField(default=False)
     receive_monthly_emails = models.BooleanField(default=False)
     receive_yearly_emails = models.BooleanField(default=False)
-    
     
     def total_share_value(self):
     #Total Dollar value of all of particular member's shares of a club
