@@ -19,12 +19,7 @@ TEMPLATE = '/var/www/bierfeldt/mysite/templates/takestock/club_detail.html'
 
 
 class Command(BaseCommand):
-    help = 'Gathers current stock prices from Google Finance using ' \
-        'stock_getter script (imported) and updates all stocks in the ' \
-        'database to reflect the current stock price.'
-
     def handle(self, *args, **options):
-
         club_list = get_list_or_404(Club)
         for club in club_list:
             for member in club.memberinstance_set.select_related():
