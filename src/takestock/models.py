@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -100,22 +101,6 @@ class StockInstance(models.Model):
         return str(str(self.shares) + str(" of ") + str(self.stock.ticker))
 
 
-class Member(models.Model):
-    """
-    Represents an individual person.
-
-    Members may belong to multiple clubs. The Member model has no relation to
-    a club. (See MemberInstance model below.)
-    """
-    name = models.CharField(max_length=200)
-    email = models.EmailField(max_length=75, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __unicode__(self):
-        return self.name
-
-
 class MemberInstance(models.Model):
     """
     Links a Member to a Club.
@@ -129,7 +114,7 @@ class MemberInstance(models.Model):
 
     """
     owner = models.ForeignKey('Club')
-    member = models.ForeignKey(Member)
+    member = models.ForeignKey(User)
     shares = models.DecimalField(max_digits=20, decimal_places=2)
     receive_daily_emails = models.BooleanField(default=False)
     receive_weekly_emails = models.BooleanField(default=False)
