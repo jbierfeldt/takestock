@@ -1,16 +1,15 @@
-import re
+import contextlib
+import csv
 import urllib
 
 
-def get_quote(symbol):
-    base_url = 'http://finance.google.com/finance?q='
-    content = urllib.urlopen(base_url + symbol).read()
-    find_q = re.search(r'\<span\sid="ref_\d+.*">(.+)<', content)
-    return find_q.group(1) if find_q else 'no quote available for: %s' % symbol
-
-
 def get_quotes(symbols):
-    symbol_value_list = []
-    for symbol in symbols:
-        symbol_value_list.append(get_quote(symbol))
-    return symbol_value_list
+    url = 'http://download.finance.yahoo.com/d/quotes.csv' \
+        '?s=' + '+'.join(symbols) + '&f=sl1'
+    with contextlib.closing(urllib.urlopen(url)) as response:
+        rows = list(csv.reader(response))
+    # Make sure we return quotes in the same order as the symbols argument,
+    # regardless of the order of Yahoo! results (which we can't guarantee to
+    # be in the same order as our request).
+    quotes = dict([(symbol, price) for symbol, price in rows])
+    return [quotes[symbol] for symbol in symbols]
