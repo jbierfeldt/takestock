@@ -4,8 +4,8 @@ from django.shortcuts import get_list_or_404, get_object_or_404, \
     render_to_response
 from django.template import RequestContext
 
-from takestock.renderpdf import render_to_pdf
-from takestock.models import Club, Member, Stock, StockInstance
+from takestock.app.renderpdf import render_to_pdf
+from takestock.app.models import Club, Member, Stock, StockInstance
 
 
 def index(request):

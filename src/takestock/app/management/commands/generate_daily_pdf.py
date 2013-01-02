@@ -8,7 +8,7 @@ from django.shortcuts import get_list_or_404
 from django.template.loader import render_to_string
 import ho.pisa as pisa
 
-from takestock.models import Club
+from takestock.app.models import Club
 
 
 BODY = "What's up {member}? You trying to party tonight? Well, just make " \

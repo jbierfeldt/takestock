@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
 
-from takestock.models import Stock
-from takestock.stock_getter import get_quotes
+from takestock.app.models import Stock
+from takestock.app.stock_getter import get_quotes
 
 
 class Command(BaseCommand):
