@@ -90,7 +90,7 @@ Current Share Price: {{ club.current_price|currency }}<br />
 		</tr>
 	{% for member in club.memberinstance_set.all %}
 		<tr>
-			<td>{{ member.member }}</td>
+			<td>{{ member.member.get_full_name }}</td>
 			<td>{{ member.shares }}</td>
 			<td>{{ member.total_share_value|currency }}</td>
 			<td>{{ member.total_share_percentage|percent }}</td>
