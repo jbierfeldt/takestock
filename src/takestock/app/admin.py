@@ -1,7 +1,6 @@
 from django.contrib import admin
 
-from takestock.app.models import Club, Member, MemberInstance, Stock, \
-    StockInstance
+from takestock.app.models import Club, MemberInstance, Stock, StockInstance
 
 
 class StockAdmin(admin.ModelAdmin):
@@ -27,10 +26,6 @@ class StockInstanceInline(admin.TabularInline):
     extra = 1
 
 
-class MemberAdmin(admin.ModelAdmin):
-    pass
-
-
 class MemberInstanceAdmin(admin.ModelAdmin):
     pass
 
@@ -51,6 +46,5 @@ class ClubAdmin(admin.ModelAdmin):
 
 admin.site.register(Stock, StockAdmin)
 admin.site.register(StockInstance, StockInstanceAdmin)
-admin.site.register(Member, MemberAdmin)
 admin.site.register(MemberInstance, MemberInstanceAdmin)
 admin.site.register(Club, ClubAdmin)
