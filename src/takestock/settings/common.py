@@ -21,6 +21,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.staticfiles',
     'django_extensions',
+    'takestock.app',
 )
 LANGUAGE_CODE = 'en-us'
 LOGGING = {
@@ -57,7 +58,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
-ROOT_URLCONF = 'takestock.urls'
+ROOT_URLCONF = 'takestock.app.urls'
 SITE_ID = 1
 STATIC_URL = '/static/'
 STATICFILES_DIRS = ()
