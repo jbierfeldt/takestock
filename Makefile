@@ -19,10 +19,16 @@ $(DEVELOPMENT_ENV_DIRECTORY)/bin/python :
 		--editable=. \
 		--requirement=requirements.txt
 
+$(DEVELOPMENT_ENV_DIRECTORY)/takestock.db : \
+		$(DEVELOPMENT_ENV_DIRECTORY)/bin/python
+	bin/manage syncdb --noinput
+
 clean :
 	git clean -fx
 
-env : $(DEVELOPMENT_ENV_DIRECTORY)/bin/python
+env : \
+		$(DEVELOPMENT_ENV_DIRECTORY)/bin/python \
+		$(DEVELOPMENT_ENV_DIRECTORY)/takestock.db
 
 lint : env
 	$(DEVELOPMENT_ENV_DIRECTORY)/bin/pep8 src
