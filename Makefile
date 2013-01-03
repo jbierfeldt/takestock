@@ -16,8 +16,8 @@ help :
 $(DEVELOPMENT_ENV_DIRECTORY)/bin/python :
 	$(PIP) install \
 		--environment=$(DEVELOPMENT_ENV_DIRECTORY) \
-		--editable . \
-		--requirement requirements.txt
+		--editable=. \
+		--requirement=requirements.txt
 
 clean :
 	git clean -fx
