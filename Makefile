@@ -23,12 +23,16 @@ $(DEVELOPMENT_ENV_DIRECTORY)/takestock.db : \
 		$(DEVELOPMENT_ENV_DIRECTORY)/bin/python
 	bin/manage syncdb --noinput
 
+bin/fab : $(DEVELOPMENT_ENV_DIRECTORY)/bin/python
+	ln -s $(DEVELOPMENT_ENV_DIRECTORY)/bin/fab bin/fab
+
 clean :
 	git clean -fx
 
 env : \
 		$(DEVELOPMENT_ENV_DIRECTORY)/bin/python \
-		$(DEVELOPMENT_ENV_DIRECTORY)/takestock.db
+		$(DEVELOPMENT_ENV_DIRECTORY)/takestock.db \
+		bin/fab
 
 lint : env
 	$(DEVELOPMENT_ENV_DIRECTORY)/bin/pep8 src
