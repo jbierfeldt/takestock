@@ -1,4 +1,5 @@
-PIP ?= pip
+PYTHON ?= python2.7
+VIRTUALENV ?= virtualenv
 
 DEVELOPMENT_ENV_DIRECTORY = $(shell pwd)/.virtualenvs/development
 
@@ -13,24 +14,28 @@ help :
 	@echo "  test      Run tests if linter finds no style errors"
 	@echo
 
-$(DEVELOPMENT_ENV_DIRECTORY)/bin/python :
-	$(PIP) install \
-		--environment=$(DEVELOPMENT_ENV_DIRECTORY) \
+$(DEVELOPMENT_ENV_DIRECTORY)/bin/fab : \
+		$(DEVELOPMENT_ENV_DIRECTORY)/bin/python
+	$(DEVELOPMENT_ENV_DIRECTORY)/bin/pip \
+		install \
 		--editable=. \
 		--requirement=requirements.txt
 
+$(DEVELOPMENT_ENV_DIRECTORY)/bin/python :
+	$(VIRTUALENV) --python=$(PYTHON) $(DEVELOPMENT_ENV_DIRECTORY)
+
 $(DEVELOPMENT_ENV_DIRECTORY)/takestock.db : \
-		$(DEVELOPMENT_ENV_DIRECTORY)/bin/python
+		$(DEVELOPMENT_ENV_DIRECTORY)/bin/fab
 	bin/manage syncdb --noinput
 
-bin/fab : $(DEVELOPMENT_ENV_DIRECTORY)/bin/python
+bin/fab : $(DEVELOPMENT_ENV_DIRECTORY)/bin/fab
 	ln -s $(DEVELOPMENT_ENV_DIRECTORY)/bin/fab bin/fab
 
 clean :
 	git clean -fx
 
 env : \
-		$(DEVELOPMENT_ENV_DIRECTORY)/bin/python \
+		$(DEVELOPMENT_ENV_DIRECTORY)/bin/fab \
 		$(DEVELOPMENT_ENV_DIRECTORY)/takestock.db \
 		bin/fab
 
