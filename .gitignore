@@ -5,3 +5,4 @@
 .virtualenvs
 bin/fab
 src/takestock.egg-info/
+data
