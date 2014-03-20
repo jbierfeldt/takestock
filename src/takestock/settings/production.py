@@ -37,5 +37,10 @@ MEDIA_ROOT = '/webapps/takestock/media/'
 STATIC_ROOT = '/webapps/takestock/static/'
 TEMPLATE_DEBUG = DEBUG
 
+ALLOWED_HOSTS = [
+    '.who-got.in', # Allow domain and subdomains
+    '.who-got.in.', # Also allow FQDN and subdomains
+	]
+
 if 'TAKESTOCK_CONFIG_PATH' in os.environ:
     execfile(os.environ['TAKESTOCK_CONFIG_PATH'])
