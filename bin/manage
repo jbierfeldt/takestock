@@ -3,6 +3,5 @@
 BIN_PATH=$(cd `dirname $0` && pwd)
 PROJECT_PATH=`dirname "$BIN_PATH"`
 ROOT_PATH=`dirname "$PROJECT_PATH"`
-echo $ROOT_PATH
 DJANGO_PATH="$ROOT_PATH/bin/django-admin.py"
 DJANGO_SETTINGS_MODULE=takestock.settings.development "$DJANGO_PATH" $@
