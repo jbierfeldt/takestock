@@ -15,7 +15,7 @@ virtualenv_path = os.path.join(root_path, '.virtualenvs', 'development')
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(virtualenv_path, 'takestock.db'),
+        'NAME': os.path.join(root_path, 'takestock.db'),
     }
 }
 
