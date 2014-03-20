@@ -10,11 +10,12 @@ from takestock.settings.common import *
 
 settings_path = os.path.abspath(os.path.dirname(__file__))
 root_path = os.path.dirname(os.path.dirname(os.path.dirname(settings_path)))
+virtualenv_path = os.path.join(root_path, '.virtualenvs', 'development')
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(root_path, 'takestock.db'),
+        'NAME': os.path.join(virtualenv_path, 'takestock.db'),
     }
 }
 DEBUG = True
