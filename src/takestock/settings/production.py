@@ -22,9 +22,10 @@ from takestock.settings.common import *
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bierfeldt',
-        'USER': 'jbierfeldt',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'takestock',
+        'USER': 'takestock',
+        'HOST': 'localhost',
     }
 }
 DEBUG = False
@@ -32,8 +33,8 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'jbierfeldt@gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-MEDIA_ROOT = '/var/www/media/bierfeldt/media/'
-STATIC_ROOT = '/var/www/media/bierfeldt/static/'
+MEDIA_ROOT = '/webapps/takestock/media/'
+STATIC_ROOT = '/webapps/takestock/static/'
 TEMPLATE_DEBUG = DEBUG
 
 if 'TAKESTOCK_CONFIG_PATH' in os.environ:
